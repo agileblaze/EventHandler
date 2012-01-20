@@ -1,0 +1,21 @@
+<html>
+  <% require 'date' %>
+  <body>
+    <span style="background-color: yellow;">
+    <h3 style="color: buttontext"><%= "**Notification mail***" %></h3>
+    <h2 style="color: red"><%= "Events In This Week" %></h2>
+     <span style="font-family:sans-serif;font-size:17px;font:bold italic 16px serif" >
+    <ol>
+          <% @data.each do |a| %>
+          <% if a.event.user_specific==true %>
+      <li style="font-size:medium"><%=a.employee.fname  %> <%= a.employee.lname %> <%= a.event.event %> On <%= a.day %> <%= Date::MONTHNAMES[a.month] %></li>
+        <% else %><li  style="font-size:medium">
+           <%= a.event.event %> On <%= a.day %> <%= Date::MONTHNAMES[a.month] %>
+  <% end %></li>
+          <% end %>
+    </ol>
+  </span>
+  </span>
+  </body>
+</html>
+

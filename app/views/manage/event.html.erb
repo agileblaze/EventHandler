@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+Name       : Pollination
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100925
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Event Handler</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<%= stylesheet_link_tag "style" %>
+<%= javascript_include_tag :defaults %>
+<%#= javascript_include_tag "prototype" %>
+<%#= javascript_include_tag "effects" %>
+<%#= javascript_include_tag "dragdrop" %>
+<%#= javascript_include_tag "controls" %>
+<%#= javascript_include_tag "application" %>
+<%= stylesheet_link_tag "calander" %>
+<%= calendar_date_select_includes 'red'%>
+<%#= javascript_include_tag "jquery-1.2.6.pack" %>
+<%#= javascript_include_tag "dimmer" %>
+<%#= javascript_include_tag "dimensions.pack" %>
+<%#= javascript_include_tag "akModal" %>
+<%#*<script src="jquery-1.2.6.pack.js"></script>%>
+<%#*<script src="dimmer.js"></script>%>
+<%#*<script src="dimensions.pack.js"></script>%>
+<%#*<script src="akModal.js"></script>%>
+<%= stylesheet_link_tag "valid" %>
+</head>
+<body>
+<div id="wrapper">
+	<div id="logo">
+		<h1>Event Handler</h1>
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="current_page_item"><span><%= link_to "Home",home_manage_path %></span></li>
+			<li><%= link_to "Users",users_manage_path %> </li>
+			<li><%= link_to "Events",event_manage_path %></li>
+                        <li><%= link_to "Cofig",config_manage_path %></li>
+                        <li><%= link_to "About" %></li>
+		</ul>
+	</div>
+	<!-- end #menu -->
+	<div id="header">
+      <div id="search">
+        <h3>Welcome <%= session[:name]%>|<%= link_to "Signout",logout_account_url %></h3>
+        </div>
+        </div>
+	<!-- end #header -->
+	<div id="page">
+          <%= error_messages_for :employee_event, :header_message => "Invalid Entry!",:message => "Data not saved.You'll need to fix the following fields:" %>
+          <div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+                                  <div class="post">
+                                    <h3>Events Lists</h3>
+                                     <ol>
+                                         <%  @events.each do |a| %>
+                                         <li><%=a.event %> <%= link_to_remote("View ",:update=>"view",:url=>{:action=>"view_event", :id=>a.id },:position=>"") %>  |<%= link_to_remote("Assigin",:update=>"assign",:url=>{:action=>"assign", :id=>a.id },:position=>"") %> </li>
+                                         <% end %>
+                                     </ol>
+			       	  </div>
+                                  <div class="post">
+                                    <div id="view">
+                                      
+                                    </div>
+                                  </div>
+                                  <div class="post">
+                                    <div id="assign">
+
+                                    </div>
+                                  </div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+                                  <h3>calendar</h3><br></br>
+                                <%= calendar_date_select_tag "e_date_and_time", nil, :embedded => true, :time => true %><br /><br />
+                                  <div id="post">
+                                    <h3>Events are</h3>
+                                         <ol>
+                                  <% @events.each do |a| %>
+                                    <li>
+                                      <%= a.event %> <%=link_to "Delete",delete_event_all_manage_path(:id=>a.id),:confirm => 'Are you sure?' %>|<%= link_to "Edit",edit_mainevent_manage_path(:id=>a.id) %>
+                                    </li>
+                                  <% end %>
+                                    </ol>
+                                       <p id="user">
+                                        <%= link_to_function("Add new","Element.remove('user'); Element.show('addevent')")%>
+                                        </p>
+
+                                     <div id="addevent" style="display:none;">
+                                    <% form_tag(:action=>"add_event",:method=>"get") do %>
+                                    <%= error_messages_for :employee %>
+                                    <table>
+                                      <tr>
+                                        <th>EventName:</th><td><%=text_field :event,:event,{:size=>16}%> </td>
+                                      </tr>
+                                      <tr>
+                                        <th>UserSpecific:</th><td><%= check_box(:event,:user_specific) %> </td>
+                                      </tr>
+                                      <tr>
+                                        <th></th><td><input type="submit" value="Add" /><a href="event.html"><input type="button" value="Cancel" /></a></td>
+                                      </tr>
+                                    </table>
+                                    <% end %><br /><br />
+                                  </div>
+                                  </div>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+
+<div id="footer">
+  <p>Copyright (c). All rights reserved. Design by <a href="http://www.freecsstemplates.org/"> CSS Templates</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

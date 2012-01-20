@@ -1,0 +1,16 @@
+<html>
+  <body>
+    <h3 style="color: buttontext"><%= "**Notification mail***" %></h3>
+    <h2 style="color: red"><%= "Today's Events" %></h2>
+    <ol>
+          <% @data1.each do |a| %>
+          <% if a.event.user_specific==true %>
+      <li style="font-size:medium"><%=a.employee.fname  %> <%= a.employee.lname %>(<%= a.event.event %> )</li>
+         <% else %>
+       <li style="font-size:medium"><%= a.event.event %> </li>
+         <% end %>
+       
+          <% end %>
+    </ol>
+  </body>
+</html>

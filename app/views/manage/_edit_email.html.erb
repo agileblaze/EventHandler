@@ -1,0 +1,8 @@
+<% form_tag(:action=>"update_email",:method=>"get",:id=>@data.id) do %>
+  <tr>
+    <th>Email ID :</th><td><%= text_field :data,:email,:size=>"16" %> </td>
+  </tr>
+  <tr>
+    <th></th><td><input type="submit" value="Change" /> </td>
+  </tr>
+<% end %>

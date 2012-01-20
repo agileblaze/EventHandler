@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Pollination
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100925
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Event Handler</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<%= stylesheet_link_tag "style" %>
+<%= javascript_include_tag :defaults %>
+<%= stylesheet_link_tag "calander" %>
+<%= calendar_date_select_includes 'red'%>
+</head>
+<body>
+<div id="wrapper">
+	<div id="logo">
+		<h1>Event Handler</h1>
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="current_page_item"><span><%= link_to "Home",login_account_url %></span></li>
+			<li><%= link_to "Users" %> </li>
+			<li><%= link_to "Events" %></li>
+			<li><%= link_to "Cofig" %></li>
+                        <li><%= link_to "About" %></li>
+		</ul>
+	</div>
+	<!-- end #menu -->
+	<div id="header">
+          <div id="search">
+
+	</div>
+	</div>
+	<!-- end #header -->
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="#">Welcome to Event Handler</a></h2>
+						 <font face="verdana,arial" size=-1>
+                                                  <center><table cellpadding=2 cellspacing=0 border=0>
+                                                  <tr><td bgcolor="red"><table cellpadding=0 cellspacing=0 border=0 width=100%><tr><td bgcolor="red" align=center style="padding:2;padding-bottom:4"><b><font size=-1 color="white">You Can Login From Here</font></th></tr>
+                                                  <tr><td bgcolor="white" style="padding:5"><br>
+                                                  <input type="hidden" name="action" value="login">
+                                                  <input type="hidden" name="hide" value="">
+                                                  <center><table>
+                                                    <% form_tag do -%>
+                                                  <tr><td><font face="verdana,arial" size=-1>Login:</td><td><%= text_field_tag 'login' %></td></tr>
+                                                  <tr><td><font face="verdana,arial" size=-1>Password:</td><td><%= password_field_tag 'password' %></td></tr>
+                                                  <tr><td><font face="verdana,arial" size=-1>&nbsp;</td><td><font face="verdana,arial" size=-1><%= submit_tag 'Log in' %></td></tr>
+                                                  <tr><td colspan=2><font face="verdana,arial" size=-1>&nbsp;</td></tr>
+                                                  </table></center>
+                                                  <% end -%>
+                                                  </td></tr></table></td></tr></table>
+
+							
+						<div class="entry">
+													</div>
+					</div>
+					
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+
+  <%= calendar_date_select_tag "e_date_and_time", nil, :embedded => true, :time => true %>
+
+
+
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+
+<div id="footer">
+	<p>Copyright (c). All rights reserved. Design by <a href="http://www.freecsstemplates.org/"> CSS Templates</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

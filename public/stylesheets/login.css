@@ -1,0 +1,106 @@
+/* 
+    Document   : login
+    Created on : Oct 22, 2010, 10:23:47 AM
+    Author     : shamith
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+#login{
+    font-weight: 200;
+    font-style: italic;
+}
+
+
+
+
+
+/* ------------ */
+/* NAV BAR */
+
+#navbar{
+background:url(pic/bg.png) repeat-x;
+height:29px;
+line-height:29px;
+}
+
+/*------ Reset CSS Properties ------ */
+#navbar ul, #navbar li,
+#navbar form,
+#navbar button {
+border:0; margin:0;padding:0; list-style:none;
+}
+
+#navbar li a{
+margin:0 6px;
+text-decoration:none;
+color:#000000;
+font-weight:bold;
+border-bottom:dotted 1px #000000;
+}
+
+/*------ Layer with Register and Login Section ------ */
+#login_menu{
+background:#aaaaaa;
+border:solid 5px #666666;
+width:343px;
+padding:55px;
+color:#FFFFFF;
+position:absolute;
+font-weight:bold;
+font-size:12px;
+line-height:18px;
+}
+#login_menu li{
+padding-bottom:6px;
+text-align:right;
+}
+#new-user-col{
+padding-right:10px;
+border-right:1px #DEDEDE solid;
+height:120px;
+width:100px;
+float:left;
+line-height:12px;
+}
+#signup-user-col{
+padding-left:20px;
+height:120px;
+width:200px;
+float:left;
+line-height:12px;
+text-align:right;
+}
+#login_menu label{font-size:11px; font-weight:normal;}
+#login_menu input{font-size:11px; color:#333333; margin-left:10px;}
+
+/*------ Button ------ */
+#login_menu button{
+line-height:24px;
+float:right;
+color:#FFFFFF;
+font-size:11px;
+font-weight:bold;
+text-align:center;
+cursor:pointer;
+}
+
+.green-button{
+background:url(pic/button.png);
+display:block;
+color:#FFFFFF;
+font-size:11px;
+text-decoration:none;
+width:81px;
+height:26px;
+line-height:24px;
+text-align:center;
+}
+
+/*------ Spacer ------ */
+.spacer{clear:both; height:1px;}

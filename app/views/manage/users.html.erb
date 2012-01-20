@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Pollination
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100925
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Event Handler</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<%= stylesheet_link_tag "valid" %>
+<%= stylesheet_link_tag "style" %>
+<%= javascript_include_tag :defaults %>
+<%= stylesheet_link_tag "calander" %>
+<%= calendar_date_select_includes 'red'%>
+<%= javascript_include_tag "prototype" %>
+</head>
+<body>
+<div id="wrapper">
+	<div id="logo">
+		<h1>Event Handler</h1>
+	</div>
+	<div id="menu">
+		<ul>
+			<li class="current_page_item"><span><%= link_to "Home",home_manage_path %></span></li>
+			<li><%= link_to "Users",users_manage_path %> </li>
+			<li><%= link_to "Events",event_manage_path  %></li>
+			<li><%= link_to "Cofig",config_manage_path %></li>
+                        <li><%= link_to "About" %></li>
+                        <li><%#= tab_to "TEST" %> </li>
+		</ul>
+	</div>
+	<!-- end #menu -->
+	<div id="header">
+      <div id="search">
+        <h3>Welcome <%= session[:name]%>|<%= link_to "Signout",logout_account_url %>  </h3>
+        </div>
+        </div>
+	<!-- end #header -->
+	<div id="page">
+           <%= error_messages_for :employee,:header_message=>"Invalid entry",:message=>"Data not saved, fix following..." %>
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+					<div class="post">
+                                            <h1>Users are</h1>
+                                             <%#= error_messages_for :employee %>
+                                            <ol>
+                                              <%  @users.each do |a| %>
+                                              <li><%=a.fname %> <%=a.lname %> <%= link_to "Delete",delete_user_manage_path(:id=>a.id) ,:confirm => 'Are you sure?'%> |<%=link_to "Edit",edit_user_manage_path(:id=>a.id) %>
+                                              </li>
+                                              <% end %>
+                                            </ol>
+					</div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+                                <%= calendar_date_select_tag "e_date_and_time", nil, :embedded => true, :time => true %>
+                                  <h2><u> Add Users</u></h2>
+                                  <%#= link_to_function("Add new","Element.remove('pg'); Element.show('table')")%>
+                                  <p id="user">
+                                    <%= link_to_function("Add new","Element.remove('user'); Element.show('adduser')")%>
+                                  </p>
+                                  <div id="adduser" style="display:none;">
+                                    <% form_tag(:action=>"add_user",:method=>"get") do %>
+                                    <%#= error_messages_for :employee %>
+                                    <table>
+                                      <tr>
+                                        <th>FirstName:</th><td><%=text_field :employee,:fname  %> </td>
+                                      </tr>                                      
+                                      <tr>
+                                        <th>LastName:</th><td><%=text_field :employee,:lname  %> </td>
+                                      </tr>
+                                      <tr>
+                                        <th>Email </th><td><%=text_field :employee,:email  %> </td>
+                                      </tr>
+                                      <tr>
+                                        <th></th><td><input type="submit" value="Add" /><a href="users.html"><input type="button" value="Cancel" /></a> </td>
+                                      </tr>  
+                                    </table>
+                                    <% end %>
+                                  </div>
+                                </div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
+
+<div id="footer">
+	<p>Copyright (c). All rights reserved. Design by <a href="http://www.sparksupport.com/"> Spark support</a>.</p>
+</div>
+<!-- end #footer -->
+</body>
+</html>

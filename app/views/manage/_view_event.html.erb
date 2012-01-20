@@ -1,0 +1,25 @@
+<%  if @count >0 %>
+<h3><%= @event.event %></h3>
+<table border="1">
+  <tr><% if @event.user_specific==true %><th>User Name</th><% end %> <th>Date</th><th>Edit</th><th>Delete</th> </tr>
+  <% @employee_event.each do |a| %>
+    <tr>
+     <% if @event.user_specific==true %> <td><%=a.employee.fname%> <%=a.employee.lname%> </td><% end %> 
+      <td><div id=<%=a.id+1000%>><%= a.event_date %></div>
+        <div id=<%=a.id%> style="display:none">
+          <% form_tag(:action=>"edit_date",:method=>"get",:id=>a.id) do %>
+             <%  @employee_event = EmployeeEvent.find(a.id)%>
+             <%# @employee_event.event_date %>
+             <%= calendar_date_select :employee_event, :event_date,:embedded => false ,:year_range => 30.years.ago..0.years.ago,:popup => :force %>
+          <input type="submit" value="Change" />
+        <% end %>
+        </div>
+      </td>
+      <td><%#= link_to "Edit" %><%= link_to_function("Edit","Element.remove('#{a.id+1000}'); Element.show('#{a.id}')")%></td>
+      <td><%= link_to "Delete",delete_event_manage_url(:id=>a.id) %></td>
+    </tr>
+  <% end %>
+</table><%#= link_to_function("Add new","Element.remove('user'); Element.show('adduser')")%>
+<% else %>
+<h3>Currently No information is here....</h3>
+<% end %>

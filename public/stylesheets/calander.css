@@ -1,0 +1,22 @@
+/* 
+    Document   : calander
+    Created on : Oct 22, 2010, 2:34:33 PM
+    Author     : shamith
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+#cal{
+
+    padding-left: 1200px;
+
+}

@@ -1,0 +1,22 @@
+<% form_tag(:action=>"assign_event",:method=>"get",:id=>@event.id) do %>
+  <%= error_messages_for :employee %>
+  <table>
+    <tr>
+      <th><u>Assign <%=@event.event%> </u></th><td></td>
+    </tr>
+    <tr></tr>
+    <%if @event.user_specific == true %>
+    <tr>
+      <th>User :</th><td> <%= collection_select(:employee_event, :employee_id, Employee.all(:order=>"fname"), :id, :name,{:include_blank=>'select'}) %></td>
+    </tr><% end %> 
+    <tr>
+      <th>Date :</th><td><%#= calendar_date_select_tag(:eve,'',:year_range => 25.years.ago..10.years.ago) %>
+                           <%  @employee_event = EmployeeEvent.new%>
+                           <%  @employee_event.event_date = ""%>
+                           <%= calendar_date_select :employee_event, :event_date,:embedded =>false ,:year_range => 30.years.ago..0.years.ago,:popup=>:force %></td>
+    </tr>
+    <tr>
+      <th></th><td><input type="submit" value="Add" /> <a href="event.html"><input type="button" value="Cancel" /></a> </td>
+    </tr>
+  </table>
+<% end %>
